@@ -31,6 +31,7 @@ const FormDialog = ({
           agent_type: data.aiAgent,
           user_name: data.name,
           user_email: data.email,
+          user_phone: data.phone,
           company: data.company,
           requirements: data.requirements,
         },

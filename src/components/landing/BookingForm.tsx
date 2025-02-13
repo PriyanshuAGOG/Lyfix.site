@@ -69,6 +69,28 @@ const BookingForm = ({ selectedAgent = "", onSubmit }: BookingFormProps) => {
       </div>
 
       <div className="space-y-2">
+        <Label htmlFor="phone">Phone Number</Label>
+        <Input
+          id="phone"
+          type="tel"
+          {...register("phone", {
+            required: "Phone number is required",
+            pattern: {
+              value: /^\+?[1-9]\d{1,14}$/,
+              message:
+                "Please enter a valid international phone number (E.164 format)",
+            },
+          })}
+          placeholder="+1 (555) 123-4567"
+        />
+        {errors.phone && (
+          <p className="text-sm text-red-500">
+            {errors.phone.message as string}
+          </p>
+        )}
+      </div>
+
+      <div className="space-y-2">
         <Label htmlFor="company">Company Name</Label>
         <Input
           id="company"
