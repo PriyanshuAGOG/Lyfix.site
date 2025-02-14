@@ -1,7 +1,7 @@
 import { Suspense } from "react";
+import { useRoutes, Routes, Route } from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
-import { useRoutes, Routes, Route } from "react-router-dom";
 import Home from "./components/home";
 import Features from "./components/pages/Features";
 import About from "./components/pages/About";
@@ -13,8 +13,8 @@ import routes from "tempo-routes";
 
 function App() {
   return (
-    <Suspense fallback={<p>Loading...</p>}>
-      <>
+    <>
+      <Suspense fallback={<p>Loading...</p>}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/features" element={<Features />} />
@@ -32,11 +32,11 @@ function App() {
             }
           />
         </Routes>
-        {import.meta.env.VITE_TEMPO === "true" && useRoutes(routes)}
-        <Analytics />
-        <SpeedInsights />
-      </>
-    </Suspense>
+      </Suspense>
+      {import.meta.env.VITE_TEMPO === "true" && useRoutes(routes)}
+      <Analytics />
+      <SpeedInsights />
+    </>
   );
 }
 
